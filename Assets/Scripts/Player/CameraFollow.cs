@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField]
     private int _distanceFromTarget = 40;
-    private int maxDistance = 60;
+    private int maxDistance = 80;
     private int minDistance = 5;
 
     private Vector3 _currentRotation;
@@ -38,7 +38,7 @@ public class CameraFollow : MonoBehaviour
             float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity;
 
             _rotationY += mouseX;
-            _rotationX += mouseY;
+            _rotationX -= mouseY;
 
             // Apply clamping for x rotation 
             _rotationX = Mathf.Clamp(_rotationX, _rotationXMinMax.x, _rotationXMinMax.y);
