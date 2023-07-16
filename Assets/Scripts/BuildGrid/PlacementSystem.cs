@@ -6,35 +6,61 @@ using UnityEngine;
 public class PlacementSystem : MonoBehaviour
 {
     [SerializeField]
-    GameObject mouseIndicator, cellIndicator;
-    [SerializeField]
     private InputManager inputManager;
     [SerializeField]
     private Grid grid;
+    private GridData floorData, objectData;
 
     [SerializeField]
-    private ObjectsDataBaseSO database;
-    private int selectedObjectIndex = -1;
+    private ObjectsDatabaseSO database;
+
 
     [SerializeField]
-    private GameObject gridVisualization;
+    private PreviewSystem previewSystem;
+
+    private Vector3Int lastDetectedPosition = Vector3Int.zero;
+
+    [SerializeField]
+    private ObjectPlacer objectPlacer;
+
+    IBuildingState buildingState;
 
     private void Start()
     {
         StopPlacement();
+        floorData = new();
+        objectData = new();
+    }
+
+    private void ChangeGridState(bool state)
+    {
+        GameObject[] gridsVisualization = GameObject.FindGameObjectsWithTag("GridVisualization");
+        foreach (GameObject grid in gridsVisualization)
+        {
+            grid.GetComponent<MeshRenderer>().enabled = state;
+        }
     }
 
     public void StartPlacement(int ID)
     {
         StopPlacement();
-        selectedObjectIndex = database.objectsData.FindIndex(data => data.ID == ID);
-        if (selectedObjectIndex < 0) 
-        { 
-            Debug.LogError($"No ID found {ID}");
-            return;
-        }
-        gridVisualization.SetActive(true);
-        cellIndicator.SetActive(true);
+        ChangeGridState(true);
+        buildingState = new PlacementState(ID,
+                                           grid,
+                                           previewSystem,
+                                           database,
+                                           floorData,
+                                           objectData,
+                                           objectPlacer);
+        inputManager.OnClicked += PlaceStructure;
+        inputManager.OnExit += StopPlacement;
+    }
+
+    public void StartRemove()
+    {
+        StopPlacement();
+        ChangeGridState(true);
+        buildingState = new RemoveState(grid, previewSystem, floorData, objectData,objectPlacer);
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
@@ -45,26 +71,33 @@ public class PlacementSystem : MonoBehaviour
             return;
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
         Vector3Int gridPosition = grid.WorldToCell(mousePosition);
-        GameObject newObject = Instantiate(database.objectsData[selectedObjectIndex].Prefab);
-        newObject.transform.position = grid.CellToWorld(gridPosition);
+
+        buildingState.OnAction(gridPosition);
     }
 
     private void StopPlacement()
     {
-        selectedObjectIndex = -1;
-        gridVisualization.SetActive(false);
-        cellIndicator.SetActive(false);
+        ChangeGridState(false);
+        if (buildingState == null)
+            return;
+        buildingState.EndState();
         inputManager.OnClicked -= PlaceStructure;
         inputManager.OnExit -= StopPlacement;
+        lastDetectedPosition = Vector3Int.zero;
+        buildingState = null;
     }
 
     private void Update()
     {
-        if (selectedObjectIndex < 0)
+        if (buildingState == null)
             return;
         Vector3 mousePosition = inputManager.GetSelectedMapPosition();
-        Vector3Int gridPosition = grid.WorldToCell(mousePosition); 
-        mouseIndicator.transform.position = mousePosition;
-        cellIndicator.transform.position = grid.CellToWorld(gridPosition);
+        Vector3Int gridPosition = grid.WorldToCell(mousePosition);
+
+        if(lastDetectedPosition != gridPosition)
+        {
+            buildingState.UpdateState(gridPosition);
+            lastDetectedPosition = gridPosition;
+        }
     }
 }
