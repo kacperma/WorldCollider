@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class PlacementState : IBuildingState
 {
     private int selectedObjectIndex = -1;
@@ -9,7 +10,6 @@ public class PlacementState : IBuildingState
     Grid grid;
     PreviewSystem previewSystem;
     ObjectsDatabaseSO database;
-    GridData floorData;
     GridData objectData;
     ObjectPlacer objectPlacer;
 
@@ -17,7 +17,6 @@ public class PlacementState : IBuildingState
         Grid grid,
         PreviewSystem previewSystem,
         ObjectsDatabaseSO database,
-        GridData floorData,
         GridData objectData,
         ObjectPlacer objectPlacer)
     {
@@ -25,7 +24,6 @@ public class PlacementState : IBuildingState
         this.grid = grid;
         this.previewSystem = previewSystem;
         this.database = database;
-        this.floorData = floorData;
         this.objectData = objectData;
         this.objectPlacer = objectPlacer;
 
@@ -53,8 +51,7 @@ public class PlacementState : IBuildingState
 
         int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, grid.CellToWorld(gridPosition));
 
-        GridData selectedData = selectedObjectIndex == 0 ? floorData : objectData;
-        selectedData.AddObjectAt(
+        objectData.AddObjectAt(
             gridPosition,
             database.objectsData[selectedObjectIndex].Size,
             database.objectsData[selectedObjectIndex].ID,
@@ -69,8 +66,7 @@ public class PlacementState : IBuildingState
     }
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
-        GridData selectedData = selectedObjectIndex == 0 ? floorData : objectData;
-        return selectedData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
+        return objectData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     }
 
 

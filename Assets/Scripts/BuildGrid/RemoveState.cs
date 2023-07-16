@@ -8,19 +8,16 @@ public class RemoveState : IBuildingState
     private int gameObjectIndex = -1;
     Grid grid;
     PreviewSystem previewSystem;
-    GridData floorData;
     GridData objectData;
     ObjectPlacer objectPlacer;
 
     public RemoveState(Grid grid,
                        PreviewSystem previewSystem,
-                       GridData floorData,
                        GridData objectData,
                        ObjectPlacer objectPlacer)
     {
         this.grid = grid;
         this.previewSystem = previewSystem;
-        this.floorData = floorData;
         this.objectData = objectData;
         this.objectPlacer = objectPlacer;
 
@@ -38,10 +35,6 @@ public class RemoveState : IBuildingState
         if (objectData.CanPlaceObjectAt(gridPosition, Vector2Int.one) == false)
         {
             selectedData = objectData;
-        }
-        if (floorData.CanPlaceObjectAt(gridPosition, Vector2Int.one) == false)
-        {
-            selectedData = floorData;
         }
 
         if(selectedData == null)
@@ -62,12 +55,12 @@ public class RemoveState : IBuildingState
 
     private bool CheckIfSelectionIsValid(Vector3Int gridPosition)
     {
-        return !(objectData.CanPlaceObjectAt(gridPosition, Vector2Int.one) && (floorData.CanPlaceObjectAt(gridPosition, Vector2Int.one) == false));
+        return objectData.CanPlaceObjectAt(gridPosition, Vector2Int.one);
     }
 
     public void UpdateState(Vector3Int gridPosition)
     {
-        bool validity = !CheckIfSelectionIsValid(gridPosition);
-        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), validity);
+        bool validity = CheckIfSelectionIsValid(gridPosition);
+        previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), !validity);
     }
 }

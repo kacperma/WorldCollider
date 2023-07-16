@@ -9,7 +9,7 @@ public class PlacementSystem : MonoBehaviour
     private InputManager inputManager;
     [SerializeField]
     private Grid grid;
-    private GridData floorData, objectData;
+    GridData objectData;
 
     [SerializeField]
     private ObjectsDatabaseSO database;
@@ -28,7 +28,6 @@ public class PlacementSystem : MonoBehaviour
     private void Start()
     {
         StopPlacement();
-        floorData = new();
         objectData = new();
     }
 
@@ -49,7 +48,6 @@ public class PlacementSystem : MonoBehaviour
                                            grid,
                                            previewSystem,
                                            database,
-                                           floorData,
                                            objectData,
                                            objectPlacer);
         inputManager.OnClicked += PlaceStructure;
@@ -60,7 +58,7 @@ public class PlacementSystem : MonoBehaviour
     {
         StopPlacement();
         ChangeGridState(true);
-        buildingState = new RemoveState(grid, previewSystem, floorData, objectData,objectPlacer);
+        buildingState = new RemoveState(grid, previewSystem, objectData,objectPlacer);
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
