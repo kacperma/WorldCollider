@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -48,8 +49,9 @@ public class PlacementState : IBuildingState
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         if (placementValidity == false)
             return;
-
-        int index = objectPlacer.PlaceObject(database.objectsData[selectedObjectIndex].Prefab, grid.CellToWorld(gridPosition));
+        GameObject prefab = database.objectsData[selectedObjectIndex].Prefab;
+        Vector3 rotation = previewSystem.GetRotation();
+        int index = objectPlacer.PlaceObject(prefab, grid.CellToWorld(gridPosition), rotation);
 
         objectData.AddObjectAt(
             gridPosition,
@@ -58,16 +60,20 @@ public class PlacementState : IBuildingState
             index);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
+
     public void UpdateState(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
-
+        
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
     }
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         return objectData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     }
-
+    public void Rotate()
+    {
+        previewSystem.Rotate();
+    }
 
 }

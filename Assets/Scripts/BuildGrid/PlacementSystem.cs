@@ -14,7 +14,6 @@ public class PlacementSystem : MonoBehaviour
     [SerializeField]
     private ObjectsDatabaseSO database;
 
-
     [SerializeField]
     private PreviewSystem previewSystem;
 
@@ -96,6 +95,10 @@ public class PlacementSystem : MonoBehaviour
         {
             buildingState.UpdateState(gridPosition);
             lastDetectedPosition = gridPosition;
+        }
+        else if(Input.GetKeyDown(KeyCode.R))
+        {
+            buildingState.Rotate();
         }
     }
 }

@@ -63,4 +63,9 @@ public class RemoveState : IBuildingState
         bool validity = CheckIfSelectionIsValid(gridPosition);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), !validity);
     }
+
+    public void Rotate()
+    {
+        return;
+    }
 }

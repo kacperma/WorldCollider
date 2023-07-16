@@ -20,6 +20,7 @@ public class InputManager : MonoBehaviour
             OnClicked?.Invoke();
         if (Input.GetKeyDown(KeyCode.Escape))
             OnExit?.Invoke();
+
     }
 
     public bool IsPointerOverUi() => EventSystem.current.IsPointerOverGameObject();

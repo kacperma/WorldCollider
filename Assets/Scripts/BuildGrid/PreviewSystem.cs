@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PreviewSystem : MonoBehaviour
@@ -63,7 +64,7 @@ public class PreviewSystem : MonoBehaviour
 
     public void UpdatePosition(Vector3 position, bool validity)
     {
-        if(previewObject != null)
+        if (previewObject != null)
         {
             MovePreview(position);
             ApplyFeedbackToPreview(validity);
@@ -100,5 +101,18 @@ public class PreviewSystem : MonoBehaviour
         cellIndicator.SetActive(true);
         PrepareCursor(Vector2Int.one);
         ApplyFeedbackToCursor(false);
+    }
+
+    internal void Rotate()
+    {
+        // IMPORTANT
+        // every prefab should have only one child and it's origin should be on point (0.5, 0, 0.5)
+        Transform prefabChild = previewObject.transform.GetChild(0);
+        prefabChild.transform.RotateAround(prefabChild.transform.position, Vector3.up, 90);
+    }
+
+    internal Vector3 GetRotation()
+    {
+        return previewObject.transform.GetChild(0).transform.eulerAngles;
     }
 }
