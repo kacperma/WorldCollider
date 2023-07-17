@@ -23,12 +23,17 @@ public class RemoveState : IBuildingState
 
         previewSystem.StartShowingRemovePreview();
     }
-
+    /// <summary>
+    /// Stops showing preview
+    /// </summary>
     public void EndState()
     {
         previewSystem.StopShowingPreview();
     }
 
+    /// <summary>
+    /// Removes object on given gridPosition
+    /// </summary>
     public void OnAction(Vector3Int gridPosition)
     {
         GridData selectedData = null;
@@ -52,18 +57,26 @@ public class RemoveState : IBuildingState
         Vector3 cellPosition = grid.CellToWorld(gridPosition);
         previewSystem.UpdatePosition(cellPosition, CheckIfSelectionIsValid(gridPosition));
     }
-
-    private bool CheckIfSelectionIsValid(Vector3Int gridPosition)
-    {
-        return objectData.CanPlaceObjectAt(gridPosition, Vector2Int.one);
-    }
-
+    
+    /// <summary>
+    /// Updates object on given gridPosition
+    /// </summary>
     public void UpdateState(Vector3Int gridPosition)
     {
         bool validity = CheckIfSelectionIsValid(gridPosition);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), !validity);
     }
+    /// <summary>
+    /// Checks if on given gridPosition is object to remove
+    /// </summary>
+    private bool CheckIfSelectionIsValid(Vector3Int gridPosition)
+    {
+        return objectData.CanPlaceObjectAt(gridPosition, Vector2Int.one);
+    }
 
+    /// <summary>
+    /// Interface compliance, does nothing
+    /// </summary>
     public void Rotate()
     {
         return;

@@ -25,3 +25,7 @@ MonoBehaviour:
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 827134892100209320, guid: a6da6a869d82c1142957bd4503ff409c, type: 3}
+  - <Name>k__BackingField: Assembler
+    <ID>k__BackingField: 3
+    <Size>k__BackingField: {x: 3, y: 3}
+    <Prefab>k__BackingField: {fileID: 4786630533117125851, guid: 42f2db2b052b74c4aa47a1e4a477cbc7, type: 3}

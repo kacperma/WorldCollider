@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
 public class PlacementState : IBuildingState
 {
     private int selectedObjectIndex = -1;
@@ -39,11 +35,17 @@ public class PlacementState : IBuildingState
         }
     }
 
+    /// <summary>
+    /// Stops showing preview
+    /// </summary>
     public void EndState()
     {
         previewSystem.StopShowingPreview();
     }
 
+    /// <summary>
+    /// Places object on given gridPosition if it's not occupied and adds it to objectData list
+    /// </summary>
     public void OnAction(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
@@ -60,17 +62,25 @@ public class PlacementState : IBuildingState
             index);
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), false);
     }
-
+    /// <summary>
+    /// Updates object on given gridPosition
+    /// </summary>
     public void UpdateState(Vector3Int gridPosition)
     {
         bool placementValidity = CheckPlacementValidity(gridPosition, selectedObjectIndex);
         
         previewSystem.UpdatePosition(grid.CellToWorld(gridPosition), placementValidity);
     }
+    /// <summary>
+    /// Checks if given gridPosition is valid for placement
+    /// </summary>
     private bool CheckPlacementValidity(Vector3Int gridPosition, int selectedObjectIndex)
     {
         return objectData.CanPlaceObjectAt(gridPosition, database.objectsData[selectedObjectIndex].Size);
     }
+    /// <summary>
+    /// Rotates preview by 90 degrees
+    /// </summary>
     public void Rotate()
     {
         previewSystem.Rotate();

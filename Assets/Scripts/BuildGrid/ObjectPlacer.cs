@@ -7,7 +7,9 @@ public class ObjectPlacer : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> placedGameObjects = new();
-
+    /// <summary>
+    /// Places given prefab on position with rotation, returns ID of placed object
+    /// </summary>
     internal int PlaceObject(GameObject prefab, Vector3 position, Vector3 rotation)
     {
         GameObject newObject = Instantiate(prefab);
@@ -16,7 +18,9 @@ public class ObjectPlacer : MonoBehaviour
         placedGameObjects.Add(newObject);
         return placedGameObjects.Count - 1;
     }
-
+    /// <summary>
+    /// Destroys object with given ID
+    /// </summary>
     internal void RemoveObjectAt(int gameObjectIndex)
     {
         if (placedGameObjects.Count <= gameObjectIndex || placedGameObjects[gameObjectIndex] == null)

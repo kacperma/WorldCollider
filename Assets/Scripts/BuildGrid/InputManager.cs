@@ -24,7 +24,9 @@ public class InputManager : MonoBehaviour
     }
 
     public bool IsPointerOverUi() => EventSystem.current.IsPointerOverGameObject();
-
+    /// <summary>
+    /// Returns grid position pointed by mouse cursor
+    /// </summary>
     public Vector3 GetSelectedMapPosition()
     {
         Vector3 mousePos = Input.mousePosition;

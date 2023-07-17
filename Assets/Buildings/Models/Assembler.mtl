@@ -1,0 +1,20 @@
+# Created by Kenney (www.kenney.nl)
+
+newmtl dark(Clone)
+Kd 0.2235294 0.2352941 0.2745098
+
+newmtl _defaultMat(Clone)
+Kd 0.9372549 0.9529412 1
+
+newmtl stone(Clone)
+Kd 0.9372549 0.9529412 1
+
+newmtl stoneLight(Clone)
+Kd 0.9372549 0.9529412 1
+
+newmtl metalLight(Clone)
+Kd 0.9372549 0.9529412 1
+
+newmtl stoneDark(Clone)
+Kd 0.9372549 0.9529412 1
+

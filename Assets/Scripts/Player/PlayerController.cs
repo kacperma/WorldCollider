@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         float inputX = Input.GetAxis("Horizontal");

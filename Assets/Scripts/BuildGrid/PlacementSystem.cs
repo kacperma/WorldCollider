@@ -29,7 +29,9 @@ public class PlacementSystem : MonoBehaviour
         StopPlacement();
         objectData = new();
     }
-
+    /// <summary>
+    /// Changes visibility of grid visualizations
+    /// </summary>
     private void ChangeGridState(bool state)
     {
         GameObject[] gridsVisualization = GameObject.FindGameObjectsWithTag("GridVisualization");
@@ -39,6 +41,9 @@ public class PlacementSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows grid and initiates object placement state
+    /// </summary>
     public void StartPlacement(int ID)
     {
         StopPlacement();
@@ -52,7 +57,9 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
-
+    /// <summary>
+    /// Shows grid and initiates object removal state
+    /// </summary>
     public void StartRemove()
     {
         StopPlacement();
@@ -61,7 +68,9 @@ public class PlacementSystem : MonoBehaviour
         inputManager.OnClicked += PlaceStructure;
         inputManager.OnExit += StopPlacement;
     }
-
+    /// <summary>
+    /// Places structure on grid position pointed by cursor
+    /// </summary>
     private void PlaceStructure()
     {
         if (inputManager.IsPointerOverUi())
@@ -71,7 +80,9 @@ public class PlacementSystem : MonoBehaviour
 
         buildingState.OnAction(gridPosition);
     }
-
+    /// <summary>
+    /// Hides grid and stops object placement state
+    /// </summary>
     private void StopPlacement()
     {
         ChangeGridState(false);
