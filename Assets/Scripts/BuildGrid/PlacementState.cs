@@ -53,7 +53,8 @@ public class PlacementState : IBuildingState
             return;
         GameObject prefab = database.objectsData[selectedObjectIndex].Prefab;
         Vector3 rotation = previewSystem.GetRotation();
-        int index = objectPlacer.PlaceObject(prefab, grid.CellToWorld(gridPosition), rotation);
+        Vector2 objectSize = database.objectsData[selectedObjectIndex].Size;
+        int index = objectPlacer.PlaceObject(prefab, grid.CellToWorld(gridPosition), rotation, objectSize);
 
         objectData.AddObjectAt(
             gridPosition,

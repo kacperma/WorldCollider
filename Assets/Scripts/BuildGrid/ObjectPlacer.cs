@@ -10,11 +10,14 @@ public class ObjectPlacer : MonoBehaviour
     /// <summary>
     /// Places given prefab on position with rotation, returns ID of placed object
     /// </summary>
-    internal int PlaceObject(GameObject prefab, Vector3 position, Vector3 rotation)
+    internal int PlaceObject(GameObject prefab, Vector3 position, Vector3 rotation, Vector2 objectSize)
     {
         GameObject newObject = Instantiate(prefab);
-        newObject.transform.position = position; 
-        newObject.transform.GetChild(0).transform.eulerAngles = rotation;
+        newObject.transform.position = position + new Vector3(
+            objectSize.x / 2,
+            0,
+            objectSize.y / 2); 
+        newObject.transform.eulerAngles = rotation;
         placedGameObjects.Add(newObject);
         return placedGameObjects.Count - 1;
     }

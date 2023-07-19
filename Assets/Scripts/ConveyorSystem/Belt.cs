@@ -50,7 +50,7 @@ public class Belt : MonoBehaviour
             beltInSequence.isSpaceTaken = true;
 
             var step = beltManager.speed * Time.deltaTime;
-            while(beltItem.item.transform.position != toPosition) 
+            while (beltItem.item.transform.position != toPosition) 
             {
                 beltItem.item.transform.position = Vector3.MoveTowards(
                     beltItem.transform.position,
@@ -70,20 +70,20 @@ public class Belt : MonoBehaviour
     private Belt FindNextBelt()
     {
         Transform currentBeltTransform = transform.GetChild(0).transform;
+        // offset by 0.2 to hit box collider of next belt
         Vector3 currentBeltPosition = new Vector3(
             currentBeltTransform.position.x,
             currentBeltTransform.position.y + 0.2f,
             currentBeltTransform.position.z);
         RaycastHit hit;
 
-        var right = currentBeltTransform.right;
-        Ray ray = new Ray(currentBeltPosition, right);
+        var forward = currentBeltTransform.forward;
+        Ray ray = new Ray(currentBeltPosition, forward);
 
-        Debug.DrawRay(currentBeltPosition, right);
+        //Debug.DrawRay(currentBeltPosition, forward);
 
         if (Physics.Raycast(ray, out hit, 1f))
         {
-            Debug.Log(hit.collider);
             Belt belt = hit.collider.GetComponent<Belt>();
             if (belt != null)
                 return belt;
