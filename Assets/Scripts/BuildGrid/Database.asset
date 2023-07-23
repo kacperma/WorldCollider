@@ -17,19 +17,19 @@ MonoBehaviour:
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 1, y: 1}
     <Prefab>k__BackingField: {fileID: 3339783120742128693, guid: 90ed24080edbf7f46a18d84e231c5330, type: 3}
-  - <Name>k__BackingField: Smelter
-    <ID>k__BackingField: 1
-    <Size>k__BackingField: {x: 2, y: 2}
-    <Prefab>k__BackingField: {fileID: 4384060673713455066, guid: eb2f475f28eb34740a50687d5da82445, type: 3}
   - <Name>k__BackingField: Inserter
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 383239105252792737, guid: aab0dab32cd782d4c89baf47f3efc2a2, type: 3}
+  - <Name>k__BackingField: InserterLong
     <ID>k__BackingField: 2
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 827134892100209320, guid: a6da6a869d82c1142957bd4503ff409c, type: 3}
-  - <Name>k__BackingField: Assembler
+    <Prefab>k__BackingField: {fileID: 383239105252792737, guid: b68800a5be300e04c873b0c61716bac5, type: 3}
+  - <Name>k__BackingField: EmptyStorage
     <ID>k__BackingField: 3
-    <Size>k__BackingField: {x: 3, y: 3}
-    <Prefab>k__BackingField: {fileID: 4786630533117125851, guid: 42f2db2b052b74c4aa47a1e4a477cbc7, type: 3}
-  - <Name>k__BackingField: BeltWithItem
+    <Size>k__BackingField: {x: 1, y: 1}
+    <Prefab>k__BackingField: {fileID: 8291397291179328710, guid: 31cc3682454883b4fa038f16b3af07cd, type: 3}
+  - <Name>k__BackingField: FullStorage
     <ID>k__BackingField: 4
     <Size>k__BackingField: {x: 1, y: 1}
-    <Prefab>k__BackingField: {fileID: 3717504372841579183, guid: 34045005c13069f4782c15938b48b039, type: 3}
+    <Prefab>k__BackingField: {fileID: 8291397291179328710, guid: 270c9f51f08f8444ba582e5c692711bc, type: 3}
