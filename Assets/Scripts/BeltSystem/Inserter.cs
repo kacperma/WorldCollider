@@ -62,10 +62,10 @@ public class Inserter : Logistic
                 {
                     logisticStartPoint.FreeSpace();
                     // moves item and inserter head to end point position
-                    while (beltItem.item.transform.position != toPosition)
+                    while (beltItem.transform.position != toPosition)
                     {
-                        beltItem.item.transform.position = Vector3.MoveTowards(
-                            beltItem.item.transform.position,
+                        beltItem.transform.position = Vector3.MoveTowards(
+                            beltItem.transform.position,
                             toPosition,
                             step / 2f);
                         inserterHead.transform.position = Vector3.MoveTowards(

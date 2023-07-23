@@ -92,8 +92,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4417447686664853863}
-  - component: {fileID: 5412500923120925445}
   - component: {fileID: 8143451496005937317}
+  - component: {fileID: -2744877060914030935}
   m_Layer: 0
   m_Name: StorageEmpty
   m_TagString: Untagged
@@ -117,22 +117,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5412500923120925445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8291397291179328710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 251b07dfc4666eb458ed0f9bfa4ae477, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beltItem: {fileID: 0}
-  isSpaceTaken: 0
-  stackSize: 0
-  connectedInserter: {fileID: 0}
 --- !u!65 &8143451496005937317
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,3 +138,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-2744877060914030935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8291397291179328710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 251b07dfc4666eb458ed0f9bfa4ae477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beltItem: {fileID: 0}
+  isSpaceTaken: 0
+  stackSize: 0
+  _beltItem:
+    <Name>k__BackingField: 
+    <ID>k__BackingField: -1
+    <Prefab>k__BackingField: {fileID: 0}

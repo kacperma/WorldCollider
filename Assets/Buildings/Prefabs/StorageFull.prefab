@@ -132,7 +132,10 @@ MonoBehaviour:
   beltItem: {fileID: 2728894642826204035, guid: 57669c9c545f637478bc4b17efd801ac, type: 3}
   isSpaceTaken: 0
   stackSize: 100
-  connectedInserter: {fileID: 0}
+  _beltItem:
+    <Name>k__BackingField: IronOre
+    <ID>k__BackingField: 0
+    <Prefab>k__BackingField: {fileID: 1865077464877150944, guid: 57669c9c545f637478bc4b17efd801ac, type: 3}
 --- !u!65 &3888065648003188039
 BoxCollider:
   m_ObjectHideFlags: 0

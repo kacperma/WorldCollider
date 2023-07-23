@@ -7,10 +7,12 @@ public class Logistic : Structure
 {
     public BeltItem beltItem;
     public bool isSpaceTaken;
+    protected BeltItemManager beltItemManager;
 
     private void Start()
     {
         logisticManager = FindObjectOfType<LogisticManager>();
+        beltItemManager = FindObjectOfType<BeltItemManager>();
         int id = _Start();
         gameObject.name = $"{this.GetType().Name}: {id}";
     }
@@ -24,7 +26,5 @@ public class Logistic : Structure
     }
     private void OnDestroy()
     {
-        if (beltItem != null)
-            Destroy(beltItem.item);
     }
 }

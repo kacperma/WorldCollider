@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Recipe
 {
-    public Dictionary<BeltItem, int> inputItems = new();
-    public BeltItem outputItem;
-    public float craftSpeed;
+    //public Dictionary<BeltItem, int> inputItems = new();
+    //public BeltItem outputItem;
+    //public float craftSpeed;
 }

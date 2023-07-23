@@ -23,7 +23,7 @@ public class Belt : Logistic
     {
         if (beltInSequence == null)
             beltInSequence = FindNextBelt();
-        if ((beltItem != null && beltItem.item != null && connectedInserter == null) 
+        if ((beltItem != null && connectedInserter == null) 
             || (connectedInserter != null && connectedInserter.isSpaceTaken == true))
         {
             StartCoroutine(StartBeltMove());
@@ -35,7 +35,6 @@ public class Belt : Logistic
     private IEnumerator StartBeltMove()
     {
         if (beltItem != null
-            && beltItem.item != null
             && beltInSequence != null
             && beltInSequence.isSpaceTaken == false)
         {
@@ -46,10 +45,10 @@ public class Belt : Logistic
             BeltItem movingBeltItem = beltItem;
             beltItem = null;
             var step = logisticManager.beltSpeed * Time.deltaTime;
-            while (movingBeltItem.item.transform.position != toPosition) 
+            while (movingBeltItem.transform.position != toPosition) 
             {
-                movingBeltItem.item.transform.position = Vector3.MoveTowards(
-                    movingBeltItem.item.transform.position,
+                movingBeltItem.transform.position = Vector3.MoveTowards(
+                    movingBeltItem.transform.position,
                     toPosition,
                     step);
                 yield return null;
