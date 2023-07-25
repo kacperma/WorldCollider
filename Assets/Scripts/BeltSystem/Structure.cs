@@ -8,6 +8,9 @@ public class Structure : MonoBehaviour
     protected Vector2 size;
     protected LogisticManager logisticManager;
 
+    /// <summary>
+    /// Returns object position with Y offset
+    /// </summary>
     public Vector3 GetItemPosition()
     {
         float padding = 0.5f;
@@ -25,7 +28,7 @@ public class Structure : MonoBehaviour
     /// <summary>
     /// Check if object can receive item
     /// </summary>
-    public virtual bool CanTakeItem(BeltItem beltItem)
+    public virtual bool CanReceiveItem(BeltItem beltItem)
     {
         throw new NotImplementedException();
     }

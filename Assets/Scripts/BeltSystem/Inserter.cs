@@ -56,9 +56,9 @@ public class Inserter : Logistic
                 Structure logisticEndPoint = (Structure)endPoint.GetComponent<MonoBehaviour>();
                 Structure logisticStartPoint = (Structure)startPoint.GetComponent<MonoBehaviour>();
                 beltItem = logisticStartPoint.GetItem();
-                bool canTake = logisticEndPoint.CanTakeItem(beltItem);
+                bool canReceive = logisticEndPoint.CanReceiveItem(beltItem);
                 bool canGive = logisticStartPoint.CanGiveItem(beltItem);
-                if (canTake && canGive)
+                if (canReceive && canGive)
                 {
                     logisticStartPoint.FreeSpace();
                     // moves item and inserter head to end point position

@@ -34,7 +34,7 @@ public class Storage : Logistic
         return this._beltItem.ID == beltItem.ID && this.stackSize < 100;
     }
 
-    public override bool CanTakeItem(BeltItem beltItem)
+    public override bool CanReceiveItem(BeltItem beltItem)
     {
         return CanPlaceItem(beltItem);
     }
@@ -69,8 +69,8 @@ public class Storage : Logistic
     public override void ReceiveItem(BeltItem beltItem)
     {
         // increments stack size and destroys previous game object
-        if (this._beltItem.ID == -1)
-            this._beltItem = beltItemManager.database.beltItemData[beltItem.ID];
+        //if (this._beltItem.ID == -1)
+        //    this._beltItem = beltItemManager.database.beltItemData[beltItem.ID];
         Destroy(beltItem.gameObject);
         this.stackSize++;
     }

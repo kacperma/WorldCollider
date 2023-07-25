@@ -89,7 +89,7 @@ public class Belt : Logistic
         return this.beltItem != null;
     }
 
-    public override bool CanTakeItem(BeltItem beltItem)
+    public override bool CanReceiveItem(BeltItem beltItem)
     {
         return true;
     }

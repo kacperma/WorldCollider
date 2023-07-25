@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class BeltItemManager : MonoBehaviour
 {
-    [SerializeField]
-    public BeltItemDatabaseSO database;
+
 }

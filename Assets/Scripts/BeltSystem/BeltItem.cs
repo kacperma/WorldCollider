@@ -13,8 +13,7 @@ public class BeltItem : MonoBehaviour
     /// </summary>
     public void SetupItem(int _id, GameObject _item)
     {
-        BeltItemManager beltItemManager = FindObjectOfType<BeltItemManager>();
-        name = $"{beltItemManager.database.beltItemData[_id].Name}";
+        //name = $"{beltItemManager.database.beltItemData[_id].Name}";
         ID = _id;
         item = _item;
     }
