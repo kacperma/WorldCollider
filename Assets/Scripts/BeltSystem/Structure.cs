@@ -21,28 +21,36 @@ public class Structure : MonoBehaviour
     /// <summary>
     /// Check if object can give item
     /// </summary>
-    public virtual bool CanGiveItem(BeltItem beltItem)
+    public virtual bool CanGiveItem(BeltItemDataSO beltItemData)
     {
         throw new NotImplementedException();
     }
     /// <summary>
     /// Check if object can receive item
     /// </summary>
-    public virtual bool CanReceiveItem(BeltItem beltItem)
+    public virtual bool CanReceiveItem(BeltItemDataSO beltItemData)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <summary>
+    /// Returns item data
+    /// </summary>
+    public virtual BeltItemDataSO GetItemData()
     {
         throw new NotImplementedException();
     }
     /// <summary>
-    /// Returns reference to item
+    /// Returns reference to item object
     /// </summary>
-    public virtual BeltItem GetItem()
+    public virtual GameObject GetItemObject()
     {
         throw new NotImplementedException();
     }
     /// <summary>
     /// Receives given item
     /// </summary>
-    public virtual void ReceiveItem(BeltItem beltItem)
+    public virtual void ReceiveItem(BeltItemDataSO beltItemData, GameObject beltItemObject)
     {
         throw new NotImplementedException();
     }
@@ -56,7 +64,7 @@ public class Structure : MonoBehaviour
     /// <summary>
     /// Waits until there is space available for item
     /// </summary>
-    public virtual bool CanPlaceItem(BeltItem beltItem)
+    public virtual bool CanPlaceItem(BeltItemDataSO beltItemData)
     {
         throw new NotImplementedException();
     }

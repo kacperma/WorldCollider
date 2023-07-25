@@ -11,6 +11,7 @@ public class Belt : Logistic
     public Belt beltInSequence;
     public Inserter connectedInserter = null;
 
+
     protected override int _Start()
     {
         beltInSequence = null;
@@ -23,8 +24,7 @@ public class Belt : Logistic
     {
         if (beltInSequence == null)
             beltInSequence = FindNextBelt();
-        if ((beltItem != null && connectedInserter == null) 
-            || (connectedInserter != null && connectedInserter.isSpaceTaken == true))
+        if (beltItemData != null && (connectedInserter == null || !connectedInserter.CanMove()))
         {
             StartCoroutine(StartBeltMove());
         }
@@ -34,7 +34,7 @@ public class Belt : Logistic
     /// </summary>
     private IEnumerator StartBeltMove()
     {
-        if (beltItem != null
+        if (beltItemData != null
             && beltInSequence != null
             && beltInSequence.isSpaceTaken == false)
         {
@@ -42,19 +42,24 @@ public class Belt : Logistic
             Vector3 toPosition = beltInSequence.GetItemPosition();
 
             beltInSequence.isSpaceTaken = true;
-            BeltItem movingBeltItem = beltItem;
-            beltItem = null;
+            BeltItemDataSO movingBeltItemData = beltItemData;
+            GameObject movingBeltItemObject = beltItemObject;
+
+            beltItemData = null;
+            beltItemObject = null;
+
             var step = logisticManager.beltSpeed * Time.deltaTime;
-            while (movingBeltItem.transform.position != toPosition) 
+            while (movingBeltItemObject.transform.position != toPosition) 
             {
-                movingBeltItem.transform.position = Vector3.MoveTowards(
-                    movingBeltItem.transform.position,
+                movingBeltItemObject.transform.position = Vector3.MoveTowards(
+                    movingBeltItemObject.transform.position,
                     toPosition,
                     step);
                 yield return null;
             }
             isSpaceTaken = false;
-            beltInSequence.beltItem = movingBeltItem;
+            beltInSequence.beltItemData = movingBeltItemData;
+            beltInSequence.beltItemObject = movingBeltItemObject;
         }
     }
     /// <summary>
@@ -84,36 +89,32 @@ public class Belt : Logistic
         return null;
     }
 
-    public override bool CanGiveItem(BeltItem beltItem)
+    public override bool CanGiveItem(BeltItemDataSO beltItem)
     {
-        return this.beltItem != null;
+        return this.beltItemData != null;
     }
 
-    public override bool CanReceiveItem(BeltItem beltItem)
+    public override bool CanReceiveItem(BeltItemDataSO beltItem)
     {
         return true;
     }
 
-    public override BeltItem GetItem()
+    public override void ReceiveItem(BeltItemDataSO beltItemData, GameObject beltItemObject)
     {
-        return this.beltItem;
-    }
-
-
-    public override void ReceiveItem(BeltItem beltItem)
-    {
-        this.beltItem = beltItem;
+        this.beltItemData = beltItemData;
+        this.beltItemObject = beltItemObject;
         this.isSpaceTaken = true;
     }
 
     public override void FreeSpace()
     {
-        this.beltItem = null;
+        this.beltItemData = null;
+        this.beltItemObject = null;
         this.isSpaceTaken = false;
     }
 
-    public override bool CanPlaceItem(BeltItem beltItem)
+    public override bool CanPlaceItem(BeltItemDataSO beltItem)
     {
-        return this.beltItem == null && this.isSpaceTaken == false; 
+        return this.beltItemData == null && this.isSpaceTaken == false; 
     }
 }

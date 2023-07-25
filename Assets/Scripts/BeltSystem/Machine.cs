@@ -5,5 +5,5 @@ using UnityEngine;
 public class Machine : Structure
 {
     [SerializeField]
-    protected Recipe selectedRecipe;
+    protected RecipeSO selectedRecipe;
 }

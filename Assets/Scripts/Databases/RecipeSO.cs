@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,10 @@ public class RecipeSO : ScriptableObject
     public List<RecipeItem> outputItemList;
     public float craftingSpeed;
 
-
+    [Serializable]
     public struct RecipeItem
     {
-        public BeltItem item;
+        public BeltItemDataSO item;
         public int amount;
     }
 }

@@ -29,11 +29,10 @@ public class Inserter : Logistic
         {
             FindEndPoints();
         }
-        if (beltItem == null
-            && startPoint != null
+        if (startPoint != null
             && endPoint != null
             && isSpaceTaken == false
-            && startPoint.GetItem() != null)
+            && startPoint.GetItemData() != null)
             StartCoroutine(StartInserterMove());
     }
 
@@ -42,7 +41,7 @@ public class Inserter : Logistic
     /// </summary>
     public IEnumerator StartInserterMove()
     {
-        if (startPoint.GetItem() != null
+        if (startPoint.GetItemData() != null
             && endPoint != null && isSpaceTaken == false)
         {
             isSpaceTaken = true;
@@ -55,17 +54,19 @@ public class Inserter : Logistic
             {
                 Structure logisticEndPoint = (Structure)endPoint.GetComponent<MonoBehaviour>();
                 Structure logisticStartPoint = (Structure)startPoint.GetComponent<MonoBehaviour>();
-                beltItem = logisticStartPoint.GetItem();
-                bool canReceive = logisticEndPoint.CanReceiveItem(beltItem);
-                bool canGive = logisticStartPoint.CanGiveItem(beltItem);
+
+                beltItemObject = logisticStartPoint.GetItemObject();
+                beltItemData = logisticStartPoint.GetItemData();
+                bool canReceive = logisticEndPoint.CanReceiveItem(beltItemData);
+                bool canGive = logisticStartPoint.CanGiveItem(beltItemData);
                 if (canReceive && canGive)
                 {
                     logisticStartPoint.FreeSpace();
                     // moves item and inserter head to end point position
-                    while (beltItem.transform.position != toPosition)
+                    while (beltItemObject.transform.position != toPosition)
                     {
-                        beltItem.transform.position = Vector3.MoveTowards(
-                            beltItem.transform.position,
+                        beltItemObject.transform.position = Vector3.MoveTowards(
+                            beltItemObject.transform.position,
                             toPosition,
                             step / 2f);
                         inserterHead.transform.position = Vector3.MoveTowards(
@@ -75,13 +76,13 @@ public class Inserter : Logistic
                         yield return null;
                     }
                     // waits until space is available
-                    while (!logisticEndPoint.CanPlaceItem(beltItem))
+                    while (!logisticEndPoint.CanPlaceItem(beltItemData))
                     {
                         yield return null;
                     }
                     // endpoint receives item
-                    logisticEndPoint.ReceiveItem(beltItem);
-                    this.beltItem = null;
+                    logisticEndPoint.ReceiveItem(beltItemData, beltItemObject);
+                    this.beltItemData = null;
                     // moves inserter head back to start position
                     while (inserterHead.transform.position != startPosition)
                     {
@@ -90,11 +91,13 @@ public class Inserter : Logistic
                             startPosition,
                             step / 2f);
                         yield return null;
-                    }
-                    // frees inserter space 
-                    isSpaceTaken = false;
+                    } 
                 }
             }
+            // frees inserter space
+            isSpaceTaken = false;
+            beltItemObject = null;
+            beltItemData = null;
         }
     }
     /// <summary>

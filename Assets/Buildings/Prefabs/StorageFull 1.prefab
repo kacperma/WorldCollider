@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5412500923120925445}
   - component: {fileID: 3888065648003188039}
   m_Layer: 0
-  m_Name: StorageFull
+  m_Name: StorageFull 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251b07dfc4666eb458ed0f9bfa4ae477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beltItemData: {fileID: 11400000, guid: d9e93c2f3d8494744bfbfb16906ba5d1, type: 2}
+  beltItemData: {fileID: 11400000, guid: 1d5f0577f00d5b046acd4ab3e8fd61a6, type: 2}
   isSpaceTaken: 0
+  beltItemObject: {fileID: 0}
   stackSize: 100
 --- !u!65 &3888065648003188039
 BoxCollider:

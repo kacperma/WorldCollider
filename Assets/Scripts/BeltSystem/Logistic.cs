@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class Logistic : Structure
 {
-    public BeltItem beltItem;
+    public BeltItemDataSO beltItemData;
     public bool isSpaceTaken;
-    protected BeltItemManager beltItemManager;
+    public GameObject beltItemObject = null;
 
     private void Start()
     {
         logisticManager = FindObjectOfType<LogisticManager>();
-        beltItemManager = FindObjectOfType<BeltItemManager>();
         int id = _Start();
         gameObject.name = $"{this.GetType().Name}: {id}";
     }
@@ -24,7 +23,19 @@ public class Logistic : Structure
     {
         throw new NotImplementedException();
     }
+
+    public override BeltItemDataSO GetItemData()
+    {
+        return this.beltItemData;
+    }
+
+    public override GameObject GetItemObject()
+    {
+        return this.beltItemObject;
+    }
+
     private void OnDestroy()
     {
+        Destroy(this.beltItemObject);
     }
 }

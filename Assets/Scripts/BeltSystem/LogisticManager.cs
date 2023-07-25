@@ -11,4 +11,7 @@ public class LogisticManager : MonoBehaviour
     public float smelterSpeed = 2f;
 
     public float assemblerSpeed = 2f;
+
+    // TODO tick system probably here
+
 }
