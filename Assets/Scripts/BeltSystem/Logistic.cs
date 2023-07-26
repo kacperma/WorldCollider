@@ -9,17 +9,10 @@ public class Logistic : Structure
     public bool isSpaceTaken;
     public GameObject beltItemObject = null;
 
-    protected override void Start()
-    {
-        base.Start();
-        int id = _Start();
-        gameObject.name = $"{this.GetType().Name}: {id}";
-    }
-
     /// <summary>
     /// Virtual method to initialize all classes that are childre
     /// </summary>
-    protected virtual int _Start()
+    protected override int _Start()
     {
         throw new NotImplementedException();
     }

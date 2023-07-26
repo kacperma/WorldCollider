@@ -12,6 +12,12 @@ public class Structure : MonoBehaviour
     protected virtual void Start()
     {
         logisticManager = FindObjectOfType<LogisticManager>();
+        int id = _Start();
+        gameObject.name = $"{this.GetType().Name}: {id}";
+    }
+    protected virtual int _Start()
+    {
+        throw new NotImplementedException();
     }
     /// <summary>
     /// Returns object position with Y offset

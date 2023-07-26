@@ -9,11 +9,13 @@ public class RecipeSO : ScriptableObject
     public List<RecipeItem> inputItemList;
     public List<RecipeItem> outputItemList;
     public float craftingSpeed;
+}
 
-    [Serializable]
-    public struct RecipeItem
-    {
-        public BeltItemDataSO item;
-        public int amount;
-    }
+[Serializable]
+public class RecipeItem
+{
+    [field: SerializeField]
+    public BeltItemDataSO item;
+    [field: SerializeField]
+    public int amount;
 }
