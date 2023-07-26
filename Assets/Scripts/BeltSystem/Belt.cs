@@ -19,15 +19,13 @@ public class Belt : Logistic
         return _beltID++;
     }
 
-    // change update to run after placing new belt
-    public void Update()
+    //change update to run after placing new belt
+    public void FixedUpdate()
     {
         if (beltInSequence == null)
             beltInSequence = FindNextBelt();
-        if (beltItemData != null && (connectedInserter == null || !connectedInserter.CanMove()))
-        {
+        if (beltItemData != null)
             StartCoroutine(StartBeltMove());
-        }
     }
     /// <summary>
     /// Moves item on belt to next in sequence
@@ -48,7 +46,7 @@ public class Belt : Logistic
             beltItemData = null;
             beltItemObject = null;
 
-            var step = logisticManager.beltSpeed * Time.deltaTime;
+            var step = logisticManager.beltSpeed / speedCap;
             while (movingBeltItemObject.transform.position != toPosition) 
             {
                 movingBeltItemObject.transform.position = Vector3.MoveTowards(

@@ -7,7 +7,12 @@ public class Structure : MonoBehaviour
 {
     protected Vector2 size;
     protected LogisticManager logisticManager;
+    protected const int speedCap = 50;
 
+    protected virtual void Start()
+    {
+        logisticManager = FindObjectOfType<LogisticManager>();
+    }
     /// <summary>
     /// Returns object position with Y offset
     /// </summary>

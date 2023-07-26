@@ -23,7 +23,7 @@ public class Inserter : Logistic
         return _inserterID++;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (startPoint == null || endPoint == null)
         {
@@ -35,7 +35,6 @@ public class Inserter : Logistic
             && startPoint.GetItemData() != null)
             StartCoroutine(StartInserterMove());
     }
-
     /// <summary>
     /// Starts inserter movement
     /// </summary>
@@ -48,7 +47,7 @@ public class Inserter : Logistic
             Vector3 startPosition = inserterHead.transform.position;
             Vector3 toPosition = endPoint.GetItemPosition();
 
-            var step = logisticManager.inserterSpeed * Time.deltaTime;
+            var step = logisticManager.inserterSpeed / speedCap;
 
             if (endPoint.GetComponent<MonoBehaviour>() is Structure && startPoint.GetComponent<MonoBehaviour>() is Structure)
             {

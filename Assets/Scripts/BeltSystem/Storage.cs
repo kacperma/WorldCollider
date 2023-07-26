@@ -20,14 +20,14 @@ public class Storage : Logistic
     {
         if (this.beltItemData == null)
             return false;
-        return this.beltItemData.ID == beltItemData.ID && this.stackSize > 0;
+        return this.beltItemData == beltItemData && this.stackSize > 0;
     }
 
     public override bool CanPlaceItem(BeltItemDataSO beltItemData)
     {
         if (this.beltItemData == null)
             return true;
-        return this.beltItemData.ID == beltItemData.ID && this.stackSize < 100;
+        return this.beltItemData == beltItemData && this.stackSize < 100;
     }
 
     public override bool CanReceiveItem(BeltItemDataSO beltItemData)

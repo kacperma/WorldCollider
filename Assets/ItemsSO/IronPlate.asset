@@ -10,8 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b0325011e433454e812fcca005d0336, type: 3}
-  m_Name: IronOre
+  m_Name: IronPlate
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: IronOre
-  <ID>k__BackingField: 0
-  <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 3f1f5bf6efc08a04ea466311a9ab23ef, type: 3}
+  <Name>k__BackingField: IronPlate
+  <Prefab>k__BackingField: {fileID: 919132149155446097, guid: 957d03bc7f09d0c42afb819b119156e3, type: 3}

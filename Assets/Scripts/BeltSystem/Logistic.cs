@@ -9,9 +9,9 @@ public class Logistic : Structure
     public bool isSpaceTaken;
     public GameObject beltItemObject = null;
 
-    private void Start()
+    protected override void Start()
     {
-        logisticManager = FindObjectOfType<LogisticManager>();
+        base.Start();
         int id = _Start();
         gameObject.name = $"{this.GetType().Name}: {id}";
     }

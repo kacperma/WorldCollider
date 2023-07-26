@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b253c9730008fc48bec62da70b2cf56, type: 3}
+  m_Name: IronPlate
+  m_EditorClassIdentifier: 
+  inputItemList:
+  - item: {fileID: 11400000, guid: a88aa397de899b547a1e91e720df6cb6, type: 2}
+    amount: 1
+  outputItemList:
+  - item: {fileID: 11400000, guid: 635a3ab9ec6b27a45b89c0f61905cc8a, type: 2}
+    amount: 1
+  craftingSpeed: 1
