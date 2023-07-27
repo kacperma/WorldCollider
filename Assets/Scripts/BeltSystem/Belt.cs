@@ -9,7 +9,6 @@ public class Belt : Logistic
     private static int _beltID = 0;
 
     public Belt beltInSequence;
-    public Inserter connectedInserter = null;
 
 
     protected override int _Start()
@@ -77,7 +76,6 @@ public class Belt : Logistic
         Ray ray = new Ray(currentBeltPosition, forward);
 
         //Debug.DrawRay(currentBeltPosition, forward);
-
         if (Physics.Raycast(ray, out hit, 1f))
         {
             Belt belt = hit.collider.GetComponent<Belt>();

@@ -9,4 +9,9 @@ public class LogisticManager : MonoBehaviour
     public float inserterSpeed = 1f;
     public float smelterSpeed = 1f;
     public float assemblerSpeed = 2f;
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
 }

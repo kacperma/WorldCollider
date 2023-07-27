@@ -1,8 +1,0 @@
-# Created by Kenney (www.kenney.nl)
-
-newmtl _defaultMat(Clone)
-Kd 0.939 0.953 1
-
-newmtl steel(Clone)
-Kd 0.311 0.309 0.34
-

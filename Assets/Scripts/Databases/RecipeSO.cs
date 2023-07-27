@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RecipeSO : ScriptableObject
 {
-    public List<RecipeItem> inputItemList;
-    public List<RecipeItem> outputItemList;
     public float craftingSpeed;
 }
 

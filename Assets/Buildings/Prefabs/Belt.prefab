@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b9caa23b8316d45ae223f7925e70d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beltItemData: {fileID: 0}
+  isSpaceTaken: 0
+  beltItemObject: {fileID: 0}
   beltInSequence: {fileID: 0}
+  connectedInserter: {fileID: 0}
 --- !u!65 &76855733922151649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58,11 +62,11 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: 1
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
@@ -125,9 +129,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3868710468543803471, guid: 3517d317acaf02740bd2eb135ecfe040, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3517d317acaf02740bd2eb135ecfe040, type: 3}
       propertyPath: m_Name
       value: arrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3517d317acaf02740bd2eb135ecfe040, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3967493562214342286, guid: 3517d317acaf02740bd2eb135ecfe040, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -203,6 +215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: conveyor-bars-stripe-high
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f298b4ddc0d29f44d820d39253484c73, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1819070693801239515, guid: f298b4ddc0d29f44d820d39253484c73, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -218,6 +234,10 @@ PrefabInstance:
     - target: {fileID: 1819070693801239515, guid: f298b4ddc0d29f44d820d39253484c73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607668393258877731, guid: f298b4ddc0d29f44d820d39253484c73, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

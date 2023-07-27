@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b253c9730008fc48bec62da70b2cf56, type: 3}
+  m_Script: {fileID: 11500000, guid: dbfcdc1d8adc56e4b84738e9f0524b31, type: 3}
   m_Name: IronPlate
   m_EditorClassIdentifier: 
-  inputItemList:
-  - item: {fileID: 11400000, guid: a88aa397de899b547a1e91e720df6cb6, type: 2}
-    amount: 1
-  outputItemList:
-  - item: {fileID: 11400000, guid: 635a3ab9ec6b27a45b89c0f61905cc8a, type: 2}
-    amount: 1
   craftingSpeed: 1
+  inputItem:
+    item: {fileID: 11400000, guid: a88aa397de899b547a1e91e720df6cb6, type: 2}
+    amount: 2
+  outputItem:
+    item: {fileID: 11400000, guid: 635a3ab9ec6b27a45b89c0f61905cc8a, type: 2}
+    amount: 1

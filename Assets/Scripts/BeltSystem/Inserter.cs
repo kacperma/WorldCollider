@@ -13,8 +13,7 @@ public class Inserter : Logistic
     protected Structure endPoint;
     [SerializeField]
     protected GameObject inserterHead = null;
-
-
+    
     protected override int _Start()
     {
         startPoint = null;
@@ -45,7 +44,8 @@ public class Inserter : Logistic
         {
             isSpaceTaken = true;
             Vector3 startPosition = inserterHead.transform.position;
-            Vector3 toPosition = endPoint.GetItemPosition();
+            Vector3 toPosition = inserterHead.transform.TransformPoint(Vector3.forward
+            * 2 * Math.Abs(inserterHead.transform.localPosition.z)); ;
 
             var step = logisticManager.inserterSpeed / speedCap;
 
@@ -61,6 +61,7 @@ public class Inserter : Logistic
                 {
                     beltItemObject = logisticStartPoint.GetItemObject();
                     logisticStartPoint.FreeSpace();
+                    beltItemObject.transform.position = startPosition;
                     // moves item and inserter head to end point position
                     while (beltItemObject.transform.position != toPosition)
                     {
@@ -81,7 +82,8 @@ public class Inserter : Logistic
                     }
                     // endpoint receives item
                     logisticEndPoint.ReceiveItem(beltItemData, beltItemObject);
-                    this.beltItemData = null;
+                    beltItemObject = null;
+                    beltItemData = null;
                     // moves inserter head back to start position
                     while (inserterHead.transform.position != startPosition)
                     {
@@ -95,8 +97,6 @@ public class Inserter : Logistic
             }
             // frees inserter space
             isSpaceTaken = false;
-            beltItemObject = null;
-            beltItemData = null;
         }
     }
     /// <summary>
@@ -117,14 +117,8 @@ public class Inserter : Logistic
         {
             Structure logisticStructure = (Structure)hit.collider.GetComponent<MonoBehaviour>();
             if (logisticStructure != null)
-            {
-                if (logisticStructure is Belt)
-                {
-                    Belt belt = (Belt)logisticStructure;
-                    belt.connectedInserter = this;
-                }
                 startPoint = logisticStructure;
-            }
+
 
         }
         // new ray position oposide of inserter head
@@ -137,9 +131,7 @@ public class Inserter : Logistic
         {
             Structure logisticStructure = (Structure)hit.collider.GetComponent<MonoBehaviour>();
             if (logisticStructure != null)
-            {
                 endPoint = logisticStructure;
-            }
         }
     }
 }

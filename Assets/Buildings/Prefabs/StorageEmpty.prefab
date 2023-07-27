@@ -150,10 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251b07dfc4666eb458ed0f9bfa4ae477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beltItem: {fileID: 0}
+  beltItemData: {fileID: 0}
   isSpaceTaken: 0
+  beltItemObject: {fileID: 0}
   stackSize: 0
-  _beltItem:
-    <Name>k__BackingField: 
-    <ID>k__BackingField: -1
-    <Prefab>k__BackingField: {fileID: 0}
